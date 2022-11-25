@@ -1,5 +1,4 @@
-import 'dart:collection';
-import 'dart:convert';
+
 import 'dart:developer' as dev;
 import 'dart:async';
 
@@ -33,20 +32,18 @@ class SeqDepServiceFFmpeg implements SeqDepService {
   
   @override
   List<SeqDepEntity> get activeSeqDepList => _activeListSeqDep;
-  
+
   @override
   Stream<List<SeqDepEntity>> get activeSeqDepListStream => _activeSeqDepStream;
  
   @override
    void addActiveSeqDep( SeqDepEntity seqDep)async {
-    //Adiciono o seqDep na lista
-    
-    _activeListSeqDep.add(seqDep);
-    _addInStream(_activeListSeqDep);
+      _activeListSeqDep.add(seqDep);
+      _addInStream(_activeListSeqDep);
    }
   
   static void _addInStream (List<SeqDepEntity> activeEntities){
-    dev.log('Numero de itens add na SeqDep Stream: ${activeEntities.length}');
+    dev.log('The number of items on Stream is: ${activeEntities.length}');
     _controller?.add(activeEntities);
   }
 
